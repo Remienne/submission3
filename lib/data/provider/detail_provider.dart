@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:submission3/data/model/restaurant_details.dart';
+import 'package:submission3/utils/result_state.dart';
 import '../api/api_service.dart';
 
-enum ResultState { loading, noData, hasData, error }
 
 class DetailProvider extends ChangeNotifier {
   final ApiService apiService;
