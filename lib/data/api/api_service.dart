@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:submission3/data/model/restaurant.dart';
 import 'package:submission3/data/model/restaurant_details.dart';
-import 'package:submission3/data/model/restaurant_result.dart';
 
 
 class ApiService {

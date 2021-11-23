@@ -39,7 +39,7 @@ class DetailPage extends StatelessWidget{
                         return Consumer<DatabaseProvider>(
                           builder: (context, provider, child) {
                             return FutureBuilder<bool>(
-                              future: provider.isBookmarked(details.id),
+                              future: provider.isFavorite(details.id),
                               builder: (context, snapshot) {
                                 var isBookmarked = snapshot.data ?? false;
                                 return SingleChildScrollView(
@@ -90,12 +90,12 @@ class DetailPage extends StatelessWidget{
                                                   ? IconButton(
                                                     icon: const Icon(Icons.favorite),
                                                     color: const Color(0xFFaeaeae),
-                                                    onPressed: () => provider.removeBookmark(restaurant.id),
+                                                    onPressed: () => provider.removeFavorite(restaurant.id),
                                               )
                                                   : IconButton(
                                                     icon: const Icon(Icons.favorite_border),
                                                     color: const Color(0xFFaeaeae),
-                                                    onPressed: () => provider.addBookmark(restaurant),
+                                                    onPressed: () => provider.addFavorite(restaurant),
                                               ),
                                             ),
                                           )

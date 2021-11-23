@@ -24,7 +24,7 @@ class DatabaseHelper {
              description TEXT,
              pictureId TEXT,
              city TEXT,
-             rating TEXT,
+             rating TEXT
            )     
         ''');
       },
@@ -42,19 +42,19 @@ class DatabaseHelper {
     return _database;
   }
 
-  Future<void> insertBookmark(Restaurant restaurant) async {
+  Future<void> insertFavorite(Restaurant restaurant) async {
     final db = await database;
     await db!.insert(_tblFavorite, restaurant.toJson());
   }
 
-  Future<List<Restaurant>> getBookmarks() async {
+  Future<List<Restaurant>> getFavorites() async {
     final db = await database;
     List<Map<String, dynamic>> results = await db!.query(_tblFavorite);
 
     return results.map((res) => Restaurant.fromJson(res)).toList();
   }
 
-  Future<Map> getBookmarkById(String id) async {
+  Future<Map> getFavoriteById(String id) async {
     final db = await database;
 
     List<Map<String, dynamic>> results = await db!.query(
@@ -70,7 +70,7 @@ class DatabaseHelper {
     }
   }
 
-  Future<void> removeBookmark(String id) async {
+  Future<void> removeFavorite(String id) async {
     final db = await database;
 
     await db!.delete(

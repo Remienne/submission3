@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:provider/provider.dart';
 import 'package:submission3/data/api/api_service.dart';
-import 'package:submission3/data/model/restaurant_result.dart';
+import 'package:submission3/data/model/restaurant.dart';
 import 'package:submission3/data/provider/search_provider.dart';
 import 'package:submission3/utils/result_state.dart';
 import 'detail_page.dart';
@@ -148,7 +148,7 @@ class BuildRestaurantItem extends StatelessWidget{
     return InkWell(
         onTap: () {
           Navigator.pushNamed(context, DetailPage.routeName,
-              arguments: restaurant.id);
+              arguments: restaurant);
         },
         child: Card(
           margin: const EdgeInsets.only(bottom: 20),

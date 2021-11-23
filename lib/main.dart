@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:submission3/data/model/restaurant.dart';
+import 'package:submission3/data/provider/main_list_provider.dart';
 import 'package:submission3/pages/detail_page.dart';
+import 'package:submission3/pages/favorites_page.dart';
 import 'package:submission3/pages/list_page.dart';
 import 'package:submission3/pages/search_page.dart';
+
+import 'data/api/api_service.dart';
+import 'data/db/database_helper.dart';
+import 'data/provider/database_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +21,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => MainListProvider(apiService: ApiService()),
+        ),
+        // ChangeNotifierProvider(create: (_) => SchedulingProvider()),
+        ChangeNotifierProvider(
+          create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
+        ),
+      ],
+      child: MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -32,11 +49,14 @@ class MyApp extends StatelessWidget {
       routes: {
         ListPage.routeName: (context) =>  const ListPage(),
         SearchPage.routeName: (context) =>  const SearchPage(),
+        FavoritePage.routeName: (context) =>  const FavoritePage(),
         DetailPage.routeName: (context) => DetailPage(
           restaurant: ModalRoute.of(context)?.settings.arguments as Restaurant,
         ),
       },
+    ),
     );
+
   }
 }
 
