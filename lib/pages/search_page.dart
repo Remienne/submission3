@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:submission3/data/api/api_service.dart';
 import 'package:submission3/data/model/restaurant_result.dart';
 import 'package:submission3/data/provider/search_provider.dart';
+import 'package:submission3/utils/result_state.dart';
 import 'detail_page.dart';
 
 class SearchPage extends StatefulWidget {

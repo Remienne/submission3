@@ -21,9 +21,10 @@ class DatabaseHelper {
         await db.execute('''CREATE TABLE $_tblFavorite (
              id TEXT PRIMARY KEY,
              name TEXT,
+             description TEXT,
+             pictureId TEXT,
              city TEXT,
              rating TEXT,
-             pictureId TEXT,
            )     
         ''');
       },
@@ -53,7 +54,7 @@ class DatabaseHelper {
     return results.map((res) => Restaurant.fromJson(res)).toList();
   }
 
-  Future<Map> getBookmarkByUrl(String id) async {
+  Future<Map> getBookmarkById(String id) async {
     final db = await database;
 
     List<Map<String, dynamic>> results = await db!.query(

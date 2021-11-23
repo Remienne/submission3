@@ -6,6 +6,7 @@ import 'package:submission3/data/api/api_service.dart';
 import 'package:submission3/data/provider/main_list_provider.dart';
 import 'package:submission3/data/model/restaurant.dart';
 import 'package:submission3/pages/search_page.dart';
+import 'package:submission3/utils/result_state.dart';
 import 'detail_page.dart';
 
 class ListPage extends StatefulWidget{
@@ -170,7 +171,7 @@ class BuildRestaurantItem extends StatelessWidget{
     return InkWell(
         onTap: () {
           Navigator.pushNamed(context, DetailPage.routeName,
-              arguments: restaurant.id);
+              arguments: restaurant);
         },
         child: Card(
           margin: const EdgeInsets.only(bottom: 20),
