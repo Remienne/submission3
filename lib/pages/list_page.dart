@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +8,7 @@ import 'package:submission3/data/provider/main_list_provider.dart';
 import 'package:submission3/data/model/restaurant.dart';
 import 'package:submission3/pages/favorites_page.dart';
 import 'package:submission3/pages/search_page.dart';
+import 'package:submission3/pages/settings_page.dart';
 import 'package:submission3/utils/result_state.dart';
 import 'detail_page.dart';
 
@@ -109,26 +111,10 @@ class _ListPageState extends State<ListPage> {
                             children:  [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
+                                children: const [
+                                  Text(
                                     "Restaurant",
                                     style: TextStyle(fontSize: 30.0, fontFamily: 'UbuntuRegular'),
-                                  ),
-                                  IconButton(
-                                      icon: const Icon(Icons.search),
-                                      color: const Color(0xFFaeaeae),
-                                      iconSize: 30,
-                                      onPressed: () {
-                                        Navigator.pushNamed(context, SearchPage.routeName);
-                                      }
-                                  ),
-                                  IconButton(
-                                      icon: const Icon(Icons.favorite),
-                                      color: const Color(0xFFaeaeae),
-                                      iconSize: 30,
-                                      onPressed: () {
-                                        Navigator.pushNamed(context, FavoritePage.routeName);
-                                      }
                                   ),
                                 ],
                               ),

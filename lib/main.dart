@@ -4,8 +4,10 @@ import 'package:submission3/data/model/restaurant.dart';
 import 'package:submission3/data/provider/main_list_provider.dart';
 import 'package:submission3/pages/detail_page.dart';
 import 'package:submission3/pages/favorites_page.dart';
+import 'package:submission3/pages/home_page.dart';
 import 'package:submission3/pages/list_page.dart';
 import 'package:submission3/pages/search_page.dart';
+import 'package:submission3/pages/settings_page.dart';
 
 import 'data/api/api_service.dart';
 import 'data/db/database_helper.dart';
@@ -45,11 +47,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: ListPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: {
+        HomePage.routeName: (context) => const HomePage(),
         ListPage.routeName: (context) =>  const ListPage(),
         SearchPage.routeName: (context) =>  const SearchPage(),
         FavoritePage.routeName: (context) =>  const FavoritePage(),
+        SettingsPage.routeName: (context) =>  const SettingsPage(),
         DetailPage.routeName: (context) => DetailPage(
           restaurant: ModalRoute.of(context)?.settings.arguments as Restaurant,
         ),

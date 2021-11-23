@@ -10,16 +10,16 @@ import 'package:submission3/pages/search_page.dart';
 import 'package:submission3/utils/result_state.dart';
 import 'detail_page.dart';
 
-class FavoritePage extends StatefulWidget{
-  static const routeName = '/restaurant_favorite_list';
+class SettingsPage extends StatefulWidget{
+  static const routeName = '/restaurant_settings';
 
-  const FavoritePage({Key? key}) : super(key: key);
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  State<FavoritePage> createState() => _FavoritePageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
