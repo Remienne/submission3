@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:submission3/data/provider/scheduling_provider.dart';
+import 'package:submission3/pages/detail_page.dart';
 import 'package:submission3/pages/list_page.dart';
+import 'package:submission3/pages/settings_page.dart';
+import 'package:submission3/utils/notification_helper.dart';
 
 import 'favorites_page.dart';
 import 'search_page.dart';
@@ -20,13 +25,13 @@ class _HomePageState extends State<HomePage> {
   static const String _settingsText = 'Settings';
   static const String _favoriteText = 'Favorites';
 
-  // final NotificationHelper _notificationHelper = NotificationHelper();
+  final NotificationHelper _notificationHelper = NotificationHelper();
 
   final List<Widget> _listWidget = [
     const ListPage(),
     const SearchPage(),
     const FavoritePage(),
-
+    const SettingsPage(),
   ];
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
@@ -44,6 +49,11 @@ class _HomePageState extends State<HomePage> {
         icon: Icon(Icons.favorite),
         label: _favoriteText
     ),
+
+    BottomNavigationBarItem(
+        icon: Icon(Icons.settings),
+        label: _settingsText
+    ),
   ];
 
   void _onBottomNavTapped(int index) {
@@ -59,12 +69,23 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _bottomNavIndex,
         items: _bottomNavBarItems,
         onTap: _onBottomNavTapped,
-
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
       ),
     );
   }
 
-
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper.configureSelectNotificationSubject(
+        DetailPage.routeName);
+  }
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
