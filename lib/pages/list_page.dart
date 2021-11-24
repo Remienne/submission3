@@ -6,9 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:submission3/data/api/api_service.dart';
 import 'package:submission3/data/provider/main_list_provider.dart';
 import 'package:submission3/data/model/restaurant.dart';
-import 'package:submission3/pages/favorites_page.dart';
-import 'package:submission3/pages/search_page.dart';
-import 'package:submission3/pages/settings_page.dart';
 import 'package:submission3/utils/result_state.dart';
 import 'detail_page.dart';
 
@@ -37,48 +34,12 @@ class _ListPageState extends State<ListPage> {
                   child,
                   connected
                       ? _buildList(context)
-                      : Positioned(
-                      left: 0.0,
-                      right: 0.0,
-                      top: 0.0,
-                      height: 50.0,
-                      child: SafeArea(
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          color:
-                          connected ? const Color(0xFF00EE44) : const Color(0xFFEE4400),
-                          child: connected
-                              ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Text(
-                                "Connected to Internet",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          )
-                              : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Text(
-                                "Waiting for internet connection",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              SizedBox(
-                                width: 8.0,
-                              ),
-                              SizedBox(
-                                width: 12.0,
-                                height: 12.0,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2.0,
-                                  valueColor:
-                                  AlwaysStoppedAnimation<Color>(
-                                      Colors.white),
-                                ),
-                              ),
-                            ],
-                          ),
+                      : const Center(
+                      child: Text(
+                        'Oops, something is wrong! No internet connection detected',
+                        style: TextStyle(
+                          fontFamily: 'UbuntuMedium',
+                          fontSize: 13,
                         ),
                       )
                   ),
