@@ -44,7 +44,7 @@ class SettingsPage extends StatelessWidget{
                         builder: (context, provider, child) {
                           return ListTile(
                             contentPadding: EdgeInsets.zero,
-                            title: const Text('Restaurant Daily Recommendations'),
+                            title: const Text('Restaurants Notification'),
                             trailing: Consumer<SchedulingProvider>(
                               builder: (context, scheduled, _) {
                                 return Switch.adaptive(
