@@ -1,7 +1,5 @@
 
 import 'dart:io';
-
-import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:submission3/common/custom_dialog.dart';
@@ -21,34 +19,58 @@ class SettingsPage extends StatelessWidget{
     }
 
     Widget _buildList(BuildContext context) {
-      return Consumer<PreferencesProvider>(
-        builder: (context, provider, child) {
-          return ListView(
-            children: [
-              Material(
-                child: ListTile(
-                  title: const Text('Scheduling News'),
-                  trailing: Consumer<SchedulingProvider>(
-                    builder: (context, scheduled, _) {
-                      return Switch.adaptive(
-                        value: provider.isDailyNewsActive,
-                        onChanged: (value) async {
-                          if (Platform.isIOS) {
-                            customDialog(context);
-                          } else {
-                            scheduled.scheduledRecommendation(value);
-                            provider.enableDailyNews(value);
-                          }
-                        },
-                      );
-                    },
+      return SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.only(right: 30, left: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 30.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:  [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "Settings",
+                            style: TextStyle(fontSize: 30.0, fontFamily: 'UbuntuRegular'),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8,),
+                      Consumer<PreferencesProvider>(
+                        builder: (context, provider, child) {
+                          return ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: const Text('Restaurant Daily Recommendations'),
+                            trailing: Consumer<SchedulingProvider>(
+                              builder: (context, scheduled, _) {
+                                return Switch.adaptive(
+                                  value: provider.isDailyNewsActive,
+                                  onChanged: (value) async {
+                                    if (Platform.isIOS) {
+                                      customDialog(context);
+                                    } else {
+                                      scheduled.scheduledRecommendation(value);
+                                      provider.enableDailyNews(value);
+                                    }
+                                  },
+                                );
+                              },
+                            ),
+                          );
+                          },
+                      )
+                    ],
                   ),
                 ),
-              ),
-            ],
-          );
-        },
+              ],
+            )
+        ),
       );
+
     }
 }
 

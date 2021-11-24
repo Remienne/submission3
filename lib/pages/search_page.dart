@@ -41,16 +41,8 @@ class _SearchPageState extends State<SearchPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              IconButton(
-                                  icon: const Icon(Icons.arrow_back),
-                                  color: const Color(0xFFaeaeae),
-                                  padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  }
-                              ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 5, bottom: 30.0, right: 30, left: 30),
+                                padding: const EdgeInsets.only(top: 40, bottom: 30.0, right: 30, left: 30),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children:  [
@@ -59,29 +51,32 @@ class _SearchPageState extends State<SearchPage> {
                                       style: TextStyle(fontSize: 30.0, fontFamily: 'UbuntuRegular'),
                                     ),
                                     const SizedBox(height: 8,),
-                                    Container(
-                                      height: 42,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: Colors.white,
-                                        border: Border.all(color: Colors.black26),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                                      child: TextField(
-                                        onSubmitted: (searchQuery){
-                                          setState(() {
-                                            query = searchQuery;
-                                            state.fetchRestaurantSearch(query);
-                                            _buildSearch(context, state);
-                                          });
-                                        },
-                                        decoration: const InputDecoration(
-                                          icon: Icon(Icons.search),
-                                          hintText: "Find restaurant name, menu, etc.",
-                                          border: InputBorder.none,
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10) ,
+                                      child: Container(
+                                        height: 42,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(12),
+                                          color: Colors.white,
+                                          border: Border.all(color: Colors.black26),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                                        child: TextField(
+                                          onSubmitted: (searchQuery){
+                                            setState(() {
+                                              query = searchQuery;
+                                              state.fetchRestaurantSearch(query);
+                                              _buildSearch(context, state);
+                                            });
+                                          },
+                                          decoration: const InputDecoration(
+                                            icon: Icon(Icons.search),
+                                            hintText: "Find restaurant name, menu, etc.",
+                                            border: InputBorder.none,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    )
                                   ],
                                 ),
                               ),

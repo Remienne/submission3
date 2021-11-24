@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart' show Client;
 import 'package:submission3/data/model/restaurant.dart';
 import 'package:submission3/data/model/restaurant_details.dart';
 
@@ -10,6 +11,11 @@ class ApiService {
   static const String _detail = 'detail/';
   static const String _search = 'search?q=';
 
+  Client? client;
+
+  ApiService({this.client}){
+    client ??= Client();
+  }
 
   Future<RestaurantList> mainList() async {
     final response = await http.get(Uri.parse(_baseUrl +_main));

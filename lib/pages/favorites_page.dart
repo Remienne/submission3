@@ -6,7 +6,6 @@ import 'package:submission3/data/api/api_service.dart';
 import 'package:submission3/data/provider/database_provider.dart';
 import 'package:submission3/data/provider/main_list_provider.dart';
 import 'package:submission3/data/model/restaurant.dart';
-import 'package:submission3/pages/search_page.dart';
 import 'package:submission3/utils/result_state.dart';
 import 'detail_page.dart';
 
@@ -109,18 +108,10 @@ class _FavoritePageState extends State<FavoritePage> {
                             children:  [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
+                                children: const [
+                                  Text(
                                     "Favorites",
                                     style: TextStyle(fontSize: 30.0, fontFamily: 'UbuntuRegular'),
-                                  ),
-                                  IconButton(
-                                      icon: const Icon(Icons.search),
-                                      color: const Color(0xFFaeaeae),
-                                      iconSize: 30,
-                                      onPressed: () {
-                                        Navigator.pushNamed(context, SearchPage.routeName);
-                                      }
                                   ),
                                 ],
                               ),
